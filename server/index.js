@@ -7,17 +7,6 @@ const app = express();
 const DisneyWorldMagicKingdom = new Themeparks.Parks.WaltDisneyWorldMagicKingdom();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(pino);
-// app.use(function(req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // update to match the domain you will make the request from
-//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//   next();
-// });
-
-app.get('/api/greeting', (req, res) => {
-  const name = req.query.name || 'World';
-  res.setHeader('Content-Type', 'application/json');
-  res.send(JSON.stringify({ greeting: `Hello ${name}!` }));
-});
 
 app.get('/rides', (req, res) => {
 
@@ -27,7 +16,10 @@ app.get('/rides', (req, res) => {
       let rideData = {
         id: ride.id,
         name: ride.name,
-        time: ride.waitTime
+        waitTime: ride.waitTime,
+        active: ride.active,
+        area: ride.meta.area,
+        status: ride.status
       }
       rideInfo.push(rideData)
     });
@@ -36,9 +28,9 @@ app.get('/rides', (req, res) => {
   }).then(() => {
     res.setHeader('Content-Type', 'application/json')
     res.send(JSON.stringify(rideInfo))
-  }
-  )
+  })
 })
+
 app.listen(3001, () =>
   console.log('Express server is running on localhost:3001')
 );

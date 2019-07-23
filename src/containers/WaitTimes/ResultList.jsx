@@ -5,8 +5,10 @@ function ResultList(props) {
         <ul className="list-group">
             {props.results.map(result => (
                 <li className="list-group-item" key={result.id}>
-                    <h5>{result.name}</h5>
-                    <p>{result.time} Minutes Wait</p>
+                    <h5>{result.name} - {result.status} </h5>
+                    <p>{result.waitTime} Minutes Wait</p>
+                    <p>{result.active}</p>
+                    <p>{result.area}</p>
                 </li>
             ))}
         </ul>

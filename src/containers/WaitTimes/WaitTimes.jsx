@@ -6,7 +6,9 @@ class WaitTimes extends Component {
 
     constructor(){
         super();
-        this.state ={results: []};
+        this.state ={
+            results: []
+        };
     }
     // state = {
     //     results: []
