@@ -11,7 +11,7 @@ app.use(pino);
 app.get('/rides', (req, res) => {
 
   let rideInfo = []
-  DisneyWorldMagicKingdom.GetWaitTimes().then((rideTimes) => {
+ DisneyWorldMagicKingdom.GetWaitTimes().then((rideTimes) => {
     rideTimes.forEach((ride) => {
       let rideData = {
         id: ride.id,
@@ -19,7 +19,9 @@ app.get('/rides', (req, res) => {
         waitTime: ride.waitTime,
         active: ride.active,
         area: ride.meta.area,
-        status: ride.status
+        status: ride.status,
+        longitude: ride.meta.longitude,
+        latitude: ride.meta.latitude
       }
       rideInfo.push(rideData)
     });

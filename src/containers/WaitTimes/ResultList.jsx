@@ -7,8 +7,7 @@ function ResultList(props) {
                 <li className="list-group-item" key={result.id}>
                     <h5>{result.name} - {result.status} </h5>
                     <p>{result.waitTime} Minutes Wait</p>
-                    <p>{result.active}</p>
-                    <p>{result.area}</p>
+                    <p>{result.fastPassStartTime}</p>
                 </li>
             ))}
         </ul>

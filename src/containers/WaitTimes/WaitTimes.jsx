@@ -34,6 +34,7 @@ class WaitTimes extends Component {
             console.log(this.state)
         })
         .catch(err =>console.log(err))
+        .then(setTimeout(this.searchPark, 1000 * 60 * 5))
 
     }
 
